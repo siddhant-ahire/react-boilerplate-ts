@@ -14,7 +14,7 @@ export default [
     files: ["src/**/*.{js,mjs,cjs,jsx,ts,tsx}"],
     languageOptions: {
       parser: tsParser, // Use TypeScript parser for both JS and TS files
-      globals: { ...globals.browser, ...globals.jest }, // Enable Jest and browser globals
+      globals: { ...globals.browser, ...globals.jest, process: "readonly", }, // Enable Jest and browser globals
     },
     plugins: {
       react: pluginReact,
