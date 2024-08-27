@@ -29,6 +29,7 @@
     "build:staging": "env-cmd -f .env.staging react-scripts build",
     "build:prod": "env-cmd -f .env.production react-scripts build",
     "pre-commit": "lint-staged",
+    "prepare": "husky install",
     "lint": "npx eslint src --no-cache --fix",
     "format": "npx prettier --write src/**/*.{js,mjs,cjs,jsx,ts,tsx}"
   },
@@ -61,7 +62,7 @@
     "eslint-plugin-react": "^7.35.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "globals": "^15.9.0",
-    "husky": "^9.1.5",
+    "husky": "^8.0.3",
     "lint-staged": "^15.2.9",
     "postcss": "^8.4.41",
     "prettier": "^3.3.3",
