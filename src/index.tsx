@@ -4,7 +4,6 @@ import './styles/globals.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 // import AppRouter from './routes/AppRouter';
-import './styles/globals.css';
 import reportWebVitals from './reportWebVitals';
 import HomePage from './components/pages/Home/HomePage';
 

@@ -13,6 +13,7 @@ const SearchBar: React.FC = () => {
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       <Button
+        variant="danger"
         text="Search"
         onClick={() => console.log('Searching for:', searchTerm)}
       />
