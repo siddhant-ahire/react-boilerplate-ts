@@ -8,13 +8,22 @@ import Button from '../../molecules/Button';
 import HorizontalLine from '../../atoms/HorizontalLine';
 import GoogleButton from '../../molecules/GoogleButton';
 
-const LoginPage: React.FC = () => (
+const RegisterPage: React.FC = () => (
   <AuthTemplate>
     <div className="flex justify-center items-center h-screen">
-      <div className="p-8 flex flex-col items-center justify-center transform -translate-y-10 gap-5">
+      <div className="p-8 flex flex-col items-center justify-center gap-5">
         <Icon src={LogoIcon} />
-        <p>Welcome Back</p>
+        <p>Create your account</p>
         <Card size="large" className="bg-gray-10 flex flex-col gap-5 p-10">
+          <div>
+            <h6>Name</h6>
+            <Input
+              type="text"
+              lable="Name"
+              size="login"
+              placeholder="Enter your name"
+            />
+          </div>
           <div>
             <h6>Email</h6>
             <Input
@@ -34,8 +43,17 @@ const LoginPage: React.FC = () => (
             />
           </div>
           <div>
+            <h6>Confirm Password</h6>
+            <Input
+              type="password"
+              lable="Confirm Password"
+              size="login"
+              placeholder="Confirm your password"
+            />
+          </div>
+          <div>
             <Button
-              text="Sign In"
+              text="Sign Up"
               size="login"
               variant="primary"
               onClick={() => {}}
@@ -43,10 +61,10 @@ const LoginPage: React.FC = () => (
               disabled={false}
             />
           </div>
-          <p>Forgot Password</p>
           <div>
+            <p>Already have an account?</p>
             <Button
-              text="Sign Up"
+              text="Sign In"
               size="login"
               variant="primary"
               onClick={() => {}}
@@ -69,4 +87,4 @@ const LoginPage: React.FC = () => (
   </AuthTemplate>
 );
 
-export default LoginPage;
+export default RegisterPage;

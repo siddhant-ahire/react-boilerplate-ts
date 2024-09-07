@@ -1,11 +1,12 @@
 import React from 'react';
 import clsx from 'clsx';
+import Loader from '../atoms/Loader'; // Import the Loader component
 
 type ButtonProps = {
   text: string;
   onClick: () => void;
   variant?: 'primary' | 'secondary' | 'danger';
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large' | 'login';
   isLoading?: boolean;
   disabled?: boolean;
   className?: string; // Custom Tailwind classes
@@ -20,9 +21,11 @@ const Button: React.FC<ButtonProps> = ({
   disabled = false,
   className,
 }) => {
-  const baseStyles = 'rounded-lg font-semibold focus:outline-none focus:ring';
+  const baseStyles =
+    'rounded-lg font-semibold focus:outline-none focus:ring flex items-center justify-center';
   const variantStyles = {
-    primary: 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500',
+    primary:
+      'bg-neutral-800 text-white hover:bg-neutral-900 focus:ring-neutral-500',
     secondary: 'bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500',
     danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500',
   };
@@ -30,6 +33,7 @@ const Button: React.FC<ButtonProps> = ({
     small: 'px-3 py-1.5 text-sm',
     medium: 'px-4 py-2 text-base',
     large: 'px-5 py-3 text-lg',
+    login: 'w-full px-2 py-2 text-base',
   };
 
   const classes = clsx(
@@ -47,7 +51,7 @@ const Button: React.FC<ButtonProps> = ({
       disabled={disabled || isLoading}
       aria-label={text}
     >
-      {isLoading ? 'Loading...' : text}
+      {isLoading ? <Loader size={size} variant={variant} /> : text}
     </button>
   );
 };
