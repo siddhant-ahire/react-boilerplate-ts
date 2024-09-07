@@ -1,5 +1,4 @@
 import React from 'react';
-import AuthTemplate from '../../templates/AuthTemplate';
 import Icon from '../../atoms/Icon';
 import { LogoIcon } from '../../../assets/icons/Icons';
 import Card from '../../atoms/Card';
@@ -9,82 +8,80 @@ import HorizontalLine from '../../atoms/HorizontalLine';
 import GoogleButton from '../../molecules/GoogleButton';
 
 const RegisterPage: React.FC = () => (
-  <AuthTemplate>
-    <div className="flex justify-center items-center h-screen">
-      <div className="p-8 flex flex-col items-center justify-center gap-5">
-        <Icon src={LogoIcon} />
-        <p>Create your account</p>
-        <Card size="large" className="bg-gray-10 flex flex-col gap-5 p-10">
-          <div>
-            <h6>Name</h6>
-            <Input
-              type="text"
-              lable="Name"
-              size="login"
-              placeholder="Enter your name"
-            />
-          </div>
-          <div>
-            <h6>Email</h6>
-            <Input
-              type="email"
-              lable="Email"
-              size="login"
-              placeholder="Enter your email"
-            />
-          </div>
-          <div>
-            <h6>Password</h6>
-            <Input
-              type="password"
-              lable="Password"
-              size="login"
-              placeholder="Enter your password"
-            />
-          </div>
-          <div>
-            <h6>Confirm Password</h6>
-            <Input
-              type="password"
-              lable="Confirm Password"
-              size="login"
-              placeholder="Confirm your password"
-            />
-          </div>
-          <div>
-            <Button
-              text="Sign Up"
-              size="login"
-              variant="primary"
-              onClick={() => {}}
-              isLoading={false}
-              disabled={false}
-            />
-          </div>
-          <div>
-            <p>Already have an account?</p>
-            <Button
-              text="Sign In"
-              size="login"
-              variant="primary"
-              onClick={() => {}}
-              isLoading={false}
-              disabled={false}
-            />
-          </div>
-          <HorizontalLine size="small" />
-          <div>
-            <GoogleButton
-              variant="primary"
-              size="login"
-              text="Continue with Google"
-              onClick={() => {}}
-            />
-          </div>
-        </Card>
-      </div>
+  <div className="flex justify-center items-center h-screen">
+    <div className="p-8 flex flex-col items-center justify-center gap-5">
+      <Icon src={LogoIcon} />
+      <p>Create your account</p>
+      <Card size="large" className="bg-gray-10 flex flex-col gap-5 p-10">
+        <div>
+          <h6>Name</h6>
+          <Input
+            type="text"
+            label="Name"
+            size="login"
+            placeholder="Enter your name"
+          />
+        </div>
+        <div>
+          <h6>Email</h6>
+          <Input
+            type="email"
+            label="Email"
+            size="login"
+            placeholder="Enter your email"
+          />
+        </div>
+        <div>
+          <h6>Password</h6>
+          <Input
+            type="password"
+            label="Password"
+            size="login"
+            placeholder="Enter your password"
+          />
+        </div>
+        <div>
+          <h6>Confirm Password</h6>
+          <Input
+            type="password"
+            label="Confirm Password"
+            size="login"
+            placeholder="Confirm your password"
+          />
+        </div>
+        <div>
+          <Button
+            text="Sign Up"
+            size="login"
+            variant="primary"
+            onClick={() => {}}
+            isLoading={false}
+            disabled={false}
+          />
+        </div>
+        <div>
+          <p>Already have an account?</p>
+          <Button
+            text="Sign In"
+            size="login"
+            variant="primary"
+            onClick={() => {}}
+            isLoading={false}
+            disabled={false}
+          />
+        </div>
+        <HorizontalLine size="small" />
+        <div>
+          <GoogleButton
+            variant="primary"
+            size="login"
+            text="Continue with Google"
+            onClick={() => {}}
+          />
+        </div>
+      </Card>
     </div>
-  </AuthTemplate>
+  </div>
 );
 
 export default RegisterPage;

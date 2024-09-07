@@ -1,4 +1,4 @@
-import create from 'zustand';
+import { create } from 'zustand';
 
 interface UserState {
   user: { id: string; name: string } | null;

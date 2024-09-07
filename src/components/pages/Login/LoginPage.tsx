@@ -1,5 +1,4 @@
-import React from 'react';
-import AuthTemplate from '../../templates/AuthTemplate';
+import React, { useRef } from 'react';
 import Icon from '../../atoms/Icon';
 import { LogoIcon } from '../../../assets/icons/Icons';
 import Card from '../../atoms/Card';
@@ -7,9 +6,38 @@ import Input from '../../atoms/Input';
 import Button from '../../molecules/Button';
 import HorizontalLine from '../../atoms/HorizontalLine';
 import GoogleButton from '../../molecules/GoogleButton';
+import { useNavigate } from 'react-router-dom';
+import useTokenStore from '../../../store/tokenStore';
+import { useMutation } from 'react-query';
+import { login } from '../../../services/authService';
 
-const LoginPage: React.FC = () => (
-  <AuthTemplate>
+const LoginPage: React.FC = () => {
+  const navigate = useNavigate();
+  const setToken = useTokenStore((state) => state.setToken);
+
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+
+  const mutation = useMutation({
+    mutationFn: login,
+    onSuccess: (response) => {
+      setToken(response.data);
+      navigate('/dashboard/home');
+    },
+  });
+
+  const handleLoginSubmit = () => {
+    const email = emailRef.current?.value;
+    const password = passwordRef.current?.value;
+    console.log('data', { email, password });
+
+    if (!email || !password) {
+      return alert('Please enter email and password');
+    }
+
+    mutation.mutate({ user_email: email, user_password: password });
+  };
+  return (
     <div className="flex justify-center items-center h-screen">
       <div className="p-8 flex flex-col items-center justify-center transform -translate-y-10 gap-5">
         <Icon src={LogoIcon} />
@@ -18,8 +46,9 @@ const LoginPage: React.FC = () => (
           <div>
             <h6>Email</h6>
             <Input
+              ref={emailRef}
               type="email"
-              lable="Email"
+              label="Email"
               size="login"
               placeholder="Enter your email"
             />
@@ -27,8 +56,9 @@ const LoginPage: React.FC = () => (
           <div>
             <h6>Password</h6>
             <Input
+              ref={passwordRef}
               type="password"
-              lable="Password"
+              label="Password"
               size="login"
               placeholder="Enter your password"
             />
@@ -38,9 +68,9 @@ const LoginPage: React.FC = () => (
               text="Sign In"
               size="login"
               variant="primary"
-              onClick={() => {}}
-              isLoading={false}
-              disabled={false}
+              onClick={handleLoginSubmit}
+              isLoading={mutation.isLoading}
+              disabled={mutation.isLoading}
             />
           </div>
           <p>Forgot Password</p>
@@ -66,7 +96,7 @@ const LoginPage: React.FC = () => (
         </Card>
       </div>
     </div>
-  </AuthTemplate>
-);
+  );
+};
 
 export default LoginPage;
