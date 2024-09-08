@@ -1,10 +1,21 @@
 import axiosInstance from '../config/axiosConfig';
-import { LoginPayload } from '../types/auth';
+import { GoogleLoginPayload, LoginPayload } from '../types/auth';
 
 export const login = async (payload: LoginPayload) => {
   const { data } = await axiosInstance.post('/api/v1/auth/login', payload, {
     withCredentials: true, // Ensure credentials are included
   });
+  return data;
+};
+
+export const googleLoginAPI = async (payload: GoogleLoginPayload) => {
+  const { data } = await axiosInstance.post(
+    '/api/v1/auth/google-login',
+    payload,
+    {
+      withCredentials: true, // Ensure credentials are included
+    }
+  );
   return data;
 };
 

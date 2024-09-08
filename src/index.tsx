@@ -10,6 +10,7 @@ import { logout, refreshAccessToken } from './services/authService';
 import useTokenStore from './store/tokenStore';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 // Create a QueryClient instance with global error handling
 const queryClient = new QueryClient({
@@ -59,8 +60,10 @@ const root = ReactDOM.createRoot(
 root.render(
   <QueryClientProvider client={queryClient}>
     <CookiesProvider>
-      <RouterProvider router={AppRouter} />
-      <ToastContainer />
+      <GoogleOAuthProvider clientId={process.env.REACT_APP_CLIENT_ID || ''}>
+        <RouterProvider router={AppRouter} />
+        <ToastContainer />
+      </GoogleOAuthProvider>
     </CookiesProvider>
   </QueryClientProvider>
 );

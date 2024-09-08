@@ -5,11 +5,11 @@ import Card from '../../atoms/Card';
 import Input from '../../atoms/Input';
 import Button from '../../molecules/Button';
 import HorizontalLine from '../../atoms/HorizontalLine';
-import GoogleButton from '../../molecules/GoogleButton';
 import { useNavigate } from 'react-router-dom';
 import useTokenStore from '../../../store/tokenStore';
 import { useMutation } from 'react-query';
-import { login } from '../../../services/authService';
+import { googleLoginAPI, login } from '../../../services/authService';
+import { GoogleLogin } from '@react-oauth/google';
 
 const LoginPage: React.FC = () => {
   const navigate = useNavigate();
@@ -37,6 +37,19 @@ const LoginPage: React.FC = () => {
 
     mutation.mutate({ user_email: email, user_password: password });
   };
+
+  const googleLoginMutation = useMutation({
+    mutationFn: googleLoginAPI,
+    onSuccess: (response) => {
+      setToken(response.data);
+      navigate('/dashboard/home');
+    },
+  });
+
+  const handleGoogleLogin = (response: any) => {
+    googleLoginMutation.mutate({ token: response.credential });
+  };
+
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="p-8 flex flex-col items-center justify-center transform -translate-y-10 gap-5">
@@ -74,23 +87,15 @@ const LoginPage: React.FC = () => {
             />
           </div>
           <p>Forgot Password</p>
-          <div>
-            <Button
-              text="Sign Up"
-              size="login"
-              variant="primary"
-              onClick={() => {}}
-              isLoading={false}
-              disabled={false}
-            />
-          </div>
           <HorizontalLine size="small" />
-          <div>
-            <GoogleButton
-              variant="primary"
-              size="login"
-              text="Continue with Google"
-              onClick={() => {}}
+          <div className="mx-auto">
+            <GoogleLogin
+              width={'100%'}
+              useOneTap
+              onSuccess={handleGoogleLogin}
+              onError={() => {
+                console.log('Login Failed');
+              }}
             />
           </div>
         </Card>
