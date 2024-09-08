@@ -5,23 +5,14 @@ import HomePage from '../components/pages/Home/HomePage';
 import AuthTemplate from '../components/templates/AuthTemplate';
 import LoginPage from '../components/pages/Login/LoginPage';
 import RegisterPage from '../components/pages/Register/RegisterPage';
-import useAuthStore from '../store/authStore';
-import { useCookies } from 'react-cookie';
 import ErrorPage from '../components/pages/Error/ErrorPage';
+import useTokenStore from '../store/tokenStore';
 
 // Component to protect routes
 const ProtectedRoute = ({ element }: { element: React.JSX.Element }) => {
-  const [cookies] = useCookies(['refreshToken']); // Fetch the 'refreshToken' cookie
-  const token = cookies.refreshToken;
-  const { login, isAuthenticated } = useAuthStore();
+  const { token } = useTokenStore();
   if (token) {
-    try {
-      if (!isAuthenticated) login();
-      return element;
-    } catch (error) {
-      console.log(error);
-      return <Navigate to="/auth/login" />;
-    }
+    return element;
   } else {
     return <Navigate to="/auth/login" />;
   }
@@ -30,9 +21,7 @@ const ProtectedRoute = ({ element }: { element: React.JSX.Element }) => {
 // Component to public routes
 // Component to restrict access to public routes (e.g., login, register)
 const PublicRoute = ({ element }: { element: React.JSX.Element }) => {
-  const [cookies] = useCookies(['refreshToken']); // Fetch the 'refreshToken' cookie
-  const token = cookies.refreshToken;
-  // If the token exists, redirect to the dashboard
+  const { token } = useTokenStore(); // If the token exists, redirect to the dashboard
   return token ? <Navigate to="/dashboard" /> : element;
 };
 

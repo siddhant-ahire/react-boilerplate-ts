@@ -1,8 +1,24 @@
 import { create } from 'zustand';
 
 interface UserState {
-  user: { id: string; name: string } | null;
-  setUser: (user: { id: string; name: string }) => void;
+  user: {
+    user_id: number;
+    user_name: string;
+    user_email: string;
+    user_active: boolean;
+    user_created_at: string;
+    user_updated_at: string;
+    user_deleted: boolean;
+  } | null;
+  setUser: (user: {
+    user_id: number;
+    user_name: string;
+    user_email: string;
+    user_active: boolean;
+    user_created_at: string;
+    user_updated_at: string;
+    user_deleted: boolean;
+  }) => void;
   clearUser: () => void;
 }
 
