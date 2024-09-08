@@ -7,15 +7,17 @@ const HomePage: React.FC = () => {
   const { data, error, isLoading } = useAuth();
   const { user, setUser, clearUser } = useUserStore();
 
-  // useEffect(() => {
-  //   console.log(data);
-  //   if(data) {
-  //     setUser(data.data);
-  //   }
-  // }, [data])
-  // useEffect(() =>  {
-  //   console.log(user)
-  // }, [user])
+  useEffect(() => {
+    console.log(data);
+    if (data) {
+      setUser(data.data);
+    }
+  }, [data, setUser]); // Include `setUser` in the dependency array
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
+
   return (
     <>
       Welcome {user?.user_name}
