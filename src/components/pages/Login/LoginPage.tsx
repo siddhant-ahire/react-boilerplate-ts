@@ -8,8 +8,8 @@ import HorizontalLine from '../../atoms/HorizontalLine';
 import { useNavigate } from 'react-router-dom';
 import useTokenStore from '../../../store/tokenStore';
 import { useMutation } from 'react-query';
-import { googleLoginAPI, login } from '../../../services/authService';
-import { GoogleLogin } from '@react-oauth/google';
+import { login } from '../../../services/authService';
+import GoogleButton from '../../molecules/GoogleButton';
 
 const LoginPage: React.FC = () => {
   const navigate = useNavigate();
@@ -36,18 +36,6 @@ const LoginPage: React.FC = () => {
     }
 
     mutation.mutate({ user_email: email, user_password: password });
-  };
-
-  const googleLoginMutation = useMutation({
-    mutationFn: googleLoginAPI,
-    onSuccess: (response) => {
-      setToken(response.data);
-      navigate('/dashboard/home');
-    },
-  });
-
-  const handleGoogleLogin = (response: any) => {
-    googleLoginMutation.mutate({ token: response.credential });
   };
 
   return (
@@ -88,16 +76,7 @@ const LoginPage: React.FC = () => {
           </div>
           <p>Forgot Password</p>
           <HorizontalLine size="small" />
-          <div className="mx-auto">
-            <GoogleLogin
-              width={'100%'}
-              useOneTap
-              onSuccess={handleGoogleLogin}
-              onError={() => {
-                console.log('Login Failed');
-              }}
-            />
-          </div>
+          <GoogleButton />
         </Card>
       </div>
     </div>

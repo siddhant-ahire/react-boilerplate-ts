@@ -71,14 +71,7 @@ const RegisterPage: React.FC = () => (
           />
         </div>
         <HorizontalLine size="small" />
-        <div>
-          <GoogleButton
-            variant="primary"
-            size="login"
-            text="Continue with Google"
-            onClick={() => {}}
-          />
-        </div>
+        <GoogleButton />
       </Card>
     </div>
   </div>
