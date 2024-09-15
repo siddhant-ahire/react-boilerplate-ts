@@ -1,10 +1,45 @@
 import axiosInstance from '../config/axiosConfig';
-import { GoogleLoginPayload, LoginPayload } from '../types/auth';
+import {
+  ForgotPasswordPayload,
+  GoogleLoginPayload,
+  LoginPayload,
+  RegisterPayload,
+  ResetPasswordPayload,
+} from '../types/auth';
 
 export const login = async (payload: LoginPayload) => {
   const { data } = await axiosInstance.post('/api/v1/auth/login', payload, {
     withCredentials: true, // Ensure credentials are included
   });
+  return data;
+};
+
+export const register_user = async (payload: RegisterPayload) => {
+  const { data } = await axiosInstance.post('/api/v1/auth/register', payload, {
+    withCredentials: true, // Ensure credentials are included
+  });
+  return data;
+};
+
+export const forgot_password = async (payload: ForgotPasswordPayload) => {
+  const { data } = await axiosInstance.post(
+    '/api/v1/auth/forgot-password',
+    payload,
+    {
+      withCredentials: true, // Ensure credentials are included
+    }
+  );
+  return data;
+};
+
+export const reset_password = async (payload: ResetPasswordPayload) => {
+  const { data } = await axiosInstance.post(
+    '/api/v1/auth/reset-password',
+    payload,
+    {
+      withCredentials: true, // Ensure credentials are included
+    }
+  );
   return data;
 };
 

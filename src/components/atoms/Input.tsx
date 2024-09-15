@@ -10,6 +10,7 @@ type InputProps = {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void; // Change handler
   className?: string; // Custom Tailwind classes if needed
   disabled?: boolean; // Disable input
+  reactHookFormRegister?: any; // React Hook Form register function
 };
 
 // Forward the ref to the input element with a display name
@@ -24,6 +25,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       onChange,
       className,
       disabled = false,
+      reactHookFormRegister,
     },
     ref // `ref` comes as the second parameter
   ) => {
@@ -49,6 +51,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           className
         )}
         disabled={disabled}
+        {...reactHookFormRegister}
       />
     );
   }

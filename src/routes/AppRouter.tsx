@@ -7,6 +7,8 @@ import LoginPage from '../components/pages/Login/LoginPage';
 import RegisterPage from '../components/pages/Register/RegisterPage';
 import ErrorPage from '../components/pages/Error/ErrorPage';
 import useTokenStore from '../store/tokenStore';
+import ForgotPasswordPage from '../components/pages/ForgotPassword/ForgotPassword';
+import ResetPasswordPage from '../components/pages/ResetPassword/ResetPassword';
 
 // Component to protect routes
 const ProtectedRoute = ({ element }: { element: React.JSX.Element }) => {
@@ -62,6 +64,14 @@ const AppRouter = createBrowserRouter([
       {
         path: 'register',
         element: <RegisterPage />,
+      },
+      {
+        path: 'forgot-password',
+        element: <ForgotPasswordPage />,
+      },
+      {
+        path: 'reset-password',
+        element: <ResetPasswordPage />,
       },
     ],
   },

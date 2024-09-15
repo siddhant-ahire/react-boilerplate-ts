@@ -3,8 +3,8 @@ import clsx from 'clsx';
 
 // Define the type for the loader props
 type LoaderProps = {
-  size?: 'small' | 'medium' | 'large' | 'login'; // Define size prop
-  variant?: 'primary' | 'secondary' | 'danger'; // Define variant prop for colors
+  size?: 'none' | 'small' | 'medium' | 'large' | 'login'; // Define size prop
+  variant?: 'primary' | 'secondary' | 'danger' | 'link'; // Define variant prop for colors
 };
 
 // Create the Loader component
@@ -14,6 +14,7 @@ const Loader: React.FC<LoaderProps> = ({
 }) => {
   // Define size styles for the loader
   const sizeStyles = {
+    none: '',
     small: 'h-4 w-4',
     medium: 'h-5 w-5',
     large: 'h-6 w-6',
@@ -25,6 +26,7 @@ const Loader: React.FC<LoaderProps> = ({
     primary: 'text-white',
     secondary: 'text-gray-400',
     danger: 'text-red-500',
+    link: '',
   };
 
   // Combine the styles using clsx

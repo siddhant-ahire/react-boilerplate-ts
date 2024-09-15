@@ -14,7 +14,7 @@ const Card: React.FC<CardProps> = ({
 }) => {
   const sizeStyles = {
     small: 'w-64 h-32', // Example dimensions for small
-    medium: 'w-80 h-40', // Example dimensions for medium
+    medium: 'w-80', // Example dimensions for medium
     large: 'min-w-96', // Example dimensions for large
   };
 
