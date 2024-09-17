@@ -1,6 +1,10 @@
 # React Boilerplate with TypeScript
 This is a scalable boilerplate built with React.js and TypeScript, aimed at enterprise-level applications. It provides a streamlined setup for creating highly maintainable, production-ready React applications with integrated testing, linting, formatting, and environment management.
 
+# Backend Support: 
+This frontend is paired with a fully integrated Node.js backend, providing a robust and synchronized full-stack setup for smooth development and deployment.
+### [Backend Repo](https://github.com/siddhant-ahire/node-boilerplate-ts)
+
 ## Table of Contents
 1. [Features](#features)
 2. [Prerequisites](#prerequisites)
