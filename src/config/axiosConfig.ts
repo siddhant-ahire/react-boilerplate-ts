@@ -2,7 +2,7 @@ import axios from 'axios';
 import useTokenStore from '../store/tokenStore';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:5002',
+  baseURL: process.env.REACT_APP_API_URL,
   timeout: 1000,
   headers: {
     'Content-Type': 'application/json',
