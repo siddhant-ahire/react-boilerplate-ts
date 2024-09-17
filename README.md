@@ -136,7 +136,7 @@ You need to configure environment variables in .env files for different environm
 Create .env.development, .env.staging, and .env.production files based on the following example:
 # Example .env file
 ```
-REACT_APP_API_URL=https://dev.example.com/api
+REACT_APP_API_URL=http://localhost:5002
 REACT_APP_ENV=development
 REACT_APP_CLIENT_ID=example.apps.googleusercontent.com
 ```
