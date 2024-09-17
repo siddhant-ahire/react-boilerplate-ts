@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/react-boilerplate-ts/static/css/main.65f7beaf.css",
+    "main.js": "/react-boilerplate-ts/static/js/main.f1e38245.js",
+    "static/js/453.c3eef487.chunk.js": "/react-boilerplate-ts/static/js/453.c3eef487.chunk.js",
+    "static/media/google.svg": "/react-boilerplate-ts/static/media/google.a2d4a43a5d50c712324e7166b53f0fb2.svg",
+    "index.html": "/react-boilerplate-ts/index.html",
+    "static/media/logo.svg": "/react-boilerplate-ts/static/media/logo.87cbb8d4f59d312976cf1924b42e6744.svg",
+    "main.65f7beaf.css.map": "/react-boilerplate-ts/static/css/main.65f7beaf.css.map",
+    "main.f1e38245.js.map": "/react-boilerplate-ts/static/js/main.f1e38245.js.map",
+    "453.c3eef487.chunk.js.map": "/react-boilerplate-ts/static/js/453.c3eef487.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.65f7beaf.css",
+    "static/js/main.f1e38245.js"
+  ]
+}
